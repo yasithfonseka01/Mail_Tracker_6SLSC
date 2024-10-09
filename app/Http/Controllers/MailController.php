@@ -12,9 +12,14 @@ class MailController extends Controller
      */
     public function index()
     {
-        return view('mails.record_mail');
+        return view('mails.to_mail');
     }
 
+    public  function homail()
+    {
+
+        return view('mails.ho_mail');
+    }
     /**
      * Show the form for creating a new resource.
      */

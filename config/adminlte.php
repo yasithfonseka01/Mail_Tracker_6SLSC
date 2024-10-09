@@ -390,9 +390,14 @@ return [
 
         ['header' => 'Mail Manage'],
         [
-            'text' => 'Draft Mail',
-            'icon_color' => 'red',
-            'url' => '',
+            'text' => 'T/O Mail',
+            'icon_color' => 'blue',
+            'url' => '/to_mail',
+        ],
+        [
+            'text' => 'H/O Mail',
+            'icon_color' => 'blue',
+            'url' => '/ho_mail',
         ],
 
 
