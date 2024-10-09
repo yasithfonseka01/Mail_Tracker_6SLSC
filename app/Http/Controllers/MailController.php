@@ -20,6 +20,12 @@ class MailController extends Controller
 
         return view('mails.ho_mail');
     }
+
+    public  function trackmail()
+    {
+
+        return view('mails.track_mail');
+    }
     /**
      * Show the form for creating a new resource.
      */

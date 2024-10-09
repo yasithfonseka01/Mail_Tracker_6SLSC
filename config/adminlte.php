@@ -391,13 +391,18 @@ return [
         ['header' => 'Mail Manage'],
         [
             'text' => 'T/O Mail',
-            'icon_color' => 'blue',
+            'icon_color' => 'green',
             'url' => '/to_mail',
         ],
         [
             'text' => 'H/O Mail',
-            'icon_color' => 'blue',
+            'icon_color' => 'green',
             'url' => '/ho_mail',
+        ],
+        [
+            'text' => 'TrackMail',
+            'icon_color' => 'green',
+            'url' => '/track_mail',
         ],
 
 

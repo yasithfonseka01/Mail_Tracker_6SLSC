@@ -39,5 +39,7 @@ require __DIR__.'/auth.php';
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
 Route::get('/to_mail', [App\Http\Controllers\MailController::class, 'index'])->name('to_mail');
 Route::get('/ho_mail', [App\Http\Controllers\MailController::class, 'homail'])->name('ho_mail');
+Route::get('/track_mail', [App\Http\Controllers\MailController::class, 'trackmail'])->name('track_mail');
