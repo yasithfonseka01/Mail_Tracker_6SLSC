@@ -26,6 +26,15 @@ class MailController extends Controller
 
         return view('mails.track_mail');
     }
+
+    public  function registermail()
+    {
+
+        return view('mails.register_mail');
+    }
+
+
+
     /**
      * Show the form for creating a new resource.
      */

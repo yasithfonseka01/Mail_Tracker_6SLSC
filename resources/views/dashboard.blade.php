@@ -12,8 +12,8 @@
                     <div class="col-md-4">
                         <div class="small-box bg-warning">
                             <div class="inner">
-                                <h3>44</h3>
-                                <p>User Registrations</p>
+                                <h3>34</h3>
+                                <p>Received Mails</p>
                             </div>
                             <div class="icon">
                                 <i class="fas fa-mail-bulk"></i>
@@ -29,7 +29,7 @@
                         <div class="small-box bg-danger">
                             <div class="inner">
                                 <h3>44</h3>
-                                <p>User Registrations</p>
+                                <p>Pending Mails</p>
                             </div>
                             <div class="icon">
                                 <i class="fas fa-mail-bulk"></i>
@@ -43,8 +43,8 @@
                     <div class="col-md-4">
                         <div class="small-box bg-success">
                             <div class="inner">
-                                <h3>44</h3>
-                                <p>User Registrations</p>
+                                <h3>21</h3>
+                                <p>Sent Mails</p>
                             </div>
                             <div class="icon">
                                 <i class="fas fa-mail-bulk"></i>

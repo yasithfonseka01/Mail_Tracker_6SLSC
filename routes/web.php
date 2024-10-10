@@ -10,6 +10,10 @@ Route::get('/', function () {
     return redirect('/login') ;
 });
 
+Route::get('/home', function () {
+    return redirect('/dashboard') ;
+});
+
 Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth', 'verified'])->name('dashboard');
@@ -38,8 +42,9 @@ require __DIR__.'/auth.php';
 
 Auth::routes();
 
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+//Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
 Route::get('/to_mail', [App\Http\Controllers\MailController::class, 'index'])->name('to_mail');
 Route::get('/ho_mail', [App\Http\Controllers\MailController::class, 'homail'])->name('ho_mail');
 Route::get('/track_mail', [App\Http\Controllers\MailController::class, 'trackmail'])->name('track_mail');
+Route::get('/register_mail', [App\Http\Controllers\MailController::class, 'registermail'])->name('register_mail');

@@ -388,7 +388,17 @@ return [
 //            'url' => '#',
 //        ],
 
+        [
+            'text' => 'Dashboard',
+            'icon_color' => 'green',
+            'url' => '/dashboard',],
+
         ['header' => 'Mail Manage'],
+        [
+            'text' => 'Register Mail',
+            'icon_color' => 'green',
+            'url' => '/register_mail',
+        ],
         [
             'text' => 'T/O Mail',
             'icon_color' => 'green',
