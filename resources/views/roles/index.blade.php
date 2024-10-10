@@ -37,9 +37,9 @@
                 <td>
                     <a class="btn btn-info" href="{{ route('roles.show', $role->id) }}">Show</a>
 
-                    @can('role-edit')
+{{--                    @can('role-edit')--}}
                         <a class="btn btn-primary" href="{{ route('roles.edit', $role->id) }}">Edit</a>
-                    @endcan
+                    {{--@endcan--}}
 
                     @can('role-delete')
                         <!-- Replace Form::open with a simple HTML form and add CSRF protection and method spoofing for DELETE -->
