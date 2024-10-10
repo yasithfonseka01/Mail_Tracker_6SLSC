@@ -1,88 +1,111 @@
 @extends('home')
 
 @section('content')
+    {{--<div class="row">--}}
+        {{--<div class="col-lg-12 margin-tb">--}}
+            {{--<div class="pull-left">--}}
+                {{--<h2>Edit User</h2>--}}
+            {{--</div>--}}
+            {{--<div class="pull-right">--}}
+                {{--<a class="btn btn-primary btn-sm mb-2" href="{{ route('users.index') }}"><i class="fa fa-arrow-left"></i> Back</a>--}}
+            {{--</div>--}}
+        {{--</div>--}}
+    {{--</div>--}}
 
-<div class="row">
-    <div class="col-lg-12 margin-tb">
-        <div class="pull-left">
-            <h2>Edit User</h2>
+
+    <section class="content-header">
+        <div class="container-fluid">
+            <div class="row mb-2">
+                <div class="col-sm-6">
+                    <h1>Edit User</h1>
+                </div>
+                <div class="col-sm-6">
+                    <ol class="breadcrumb float-sm-right">
+                        <li class="breadcrumb-item"><a href="#">Home</a></li>
+                        <li class="breadcrumb-item active">Edit User</li>
+                    </ol>
+
+                </div>
+            </div>
+            <a class="btn btn-primary btn-sm mb-2" href="{{ route('users.index') }}"><i class="fa fa-arrow-left"></i> Back</a>
         </div>
-        <div class="pull-right">
-            <a class="btn btn-primary" href="{{ route('users.index') }}"> Back</a>
+    </section>
+
+    @if (count($errors) > 0)
+        <div class="alert alert-danger">
+            <strong>Whoops!</strong> There were some problems with your input.<br><br>
+            <ul>
+                @foreach ($errors->all() as $error)
+                    <li>{{ $error }}</li>
+                @endforeach
+            </ul>
         </div>
-    </div>
-</div>
+    @endif
 
-@if ($errors->any())
-    <div class="alert alert-danger">
-        <strong>Whoops!</strong> There were some problems with your input.<br><br>
-        <ul>
-            @foreach ($errors->all() as $error)
-                <li>{{ $error }}</li>
-            @endforeach
-        </ul>
-    </div>
-@endif
+    <section class="content">
+        <div class="container-fluid">
 
-<form action="{{ route('users.update', $user->id) }}" method="POST">
-    @csrf
-    @method('PATCH')
+            <div class="card card-default">
+                <div class="card-header">
+                    <h3 class="card-title">User</h3>
+                    <div class="card-tools">
 
-    <div class="row">
-        <!-- Name -->
-        <div class="col-xs-12 col-sm-12 col-md-12">
-            <div class="form-group">
-                <strong>Name:</strong>
-                <input type="text" name="name" placeholder="Name" class="form-control" value="{{ old('name', $user->name) }}">
+                    </div>
+                </div>
+
+                <div class="card-body">
+
+                   <form method="POST" action="{{ route('users.update', $user->id) }}">
+        @csrf
+        @method('PUT')
+
+        <div class="row">
+            <div class="col-xs-12 col-sm-12 col-md-12">
+                <div class="form-group">
+                    <strong>Name:</strong>
+                    <input type="text" name="name" placeholder="Name" class="form-control" value="{{ $user->name }}">
+                </div>
+            </div>
+            <div class="col-xs-12 col-sm-12 col-md-12">
+                <div class="form-group">
+                    <strong>Email:</strong>
+                    <input type="email" name="email" placeholder="Email" class="form-control" value="{{ $user->email }}">
+                </div>
+            </div>
+            <div class="col-xs-12 col-sm-12 col-md-12">
+                <div class="form-group">
+                    <strong>Password:</strong>
+                    <input type="password" name="password" placeholder="Password" class="form-control">
+                </div>
+            </div>
+            <div class="col-xs-12 col-sm-12 col-md-12">
+                <div class="form-group">
+                    <strong>Confirm Password:</strong>
+                    <input type="password" name="confirm-password" placeholder="Confirm Password" class="form-control">
+                </div>
+            </div>
+            <div class="col-xs-12 col-sm-12 col-md-12">
+                <div class="form-group">
+                    <strong>Role:</strong>
+                    <select name="roles[]" class="form-control" multiple="multiple">
+                        @foreach ($roles as $value => $label)
+                            <option value="{{ $value }}" {{ isset($userRole[$value]) ? 'selected' : ''}}>
+                                {{ $label }}
+                            </option>
+                        @endforeach
+                    </select>
+                </div>
+            </div>
+            <div class="col-xs-12 col-sm-12 col-md-12 text-center">
+                <button type="submit" class="btn btn-primary btn-sm mt-2 mb-3"><i class="fa-solid fa-floppy-disk"></i> Submit</button>
             </div>
         </div>
+    </form>
 
-        <!-- Email -->
-        <div class="col-xs-12 col-sm-12 col-md-12">
-            <div class="form-group">
-                <strong>Email:</strong>
-                <input type="email" name="email" placeholder="Email" class="form-control" value="{{ old('email', $user->email) }}">
+                </div>
             </div>
-        </div>
 
-        <!-- Password -->
-        <div class="col-xs-12 col-sm-12 col-md-12">
-            <div class="form-group">
-                <strong>Password:</strong>
-                <input type="password" name="password" placeholder="Password" class="form-control">
-                <small class="form-text text-muted">Leave blank if you don't want to change the password.</small>
-            </div>
         </div>
-
-        <!-- Confirm Password -->
-        <div class="col-xs-12 col-sm-12 col-md-12">
-            <div class="form-group">
-                <strong>Confirm Password:</strong>
-                <input type="password" name="confirm-password" placeholder="Confirm Password" class="form-control">
-            </div>
-        </div>
-
-        <!-- Roles -->
-        <div class="col-xs-12 col-sm-12 col-md-12">
-            <div class="form-group">
-                <strong>Role:</strong>
-                <select name="roles[]" class="form-control" multiple>
-                    @foreach ($roles as $role)
-                        <option value="{{ $role->id }}" {{ in_array($role->id, old('roles', $userRole)) ? 'selected' : '' }}>
-                            {{ $role->name }}
-                        </option>
-                    @endforeach
-                </select>
-            </div>
-        </div>
-
-        <!-- Submit Button -->
-        <div class="col-xs-12 col-sm-12 col-md-12 text-center">
-            <button type="submit" class="btn btn-primary">Submit</button>
-        </div>
-    </div>
-</form>
-
-<p class="text-center text-primary"><small>Tutorial by ItSolutionStuff.com</small></p>
+    </section>
 
 @endsection
